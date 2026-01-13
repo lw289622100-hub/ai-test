@@ -46,7 +46,7 @@ export const searchIngredient = async (query: string): Promise<IngredientResult>
     // 你的原始代码是 gemini-3-pro-preview，但 API 调用极易 404。
     // 改用 gemini-2.0-flash-exp，它支持 googleSearch 工具且效果最好。
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview", 
+      model: "gemini-3-flash-preview", 
       contents: prompt,
       config: {
         // 🔥 核心逻辑恢复：保留 Google 搜索工具，找回准确性
@@ -157,7 +157,7 @@ export const fetchLatestApprovals = async (): Promise<ApprovedIngredient[]> => {
   
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview", // 保持模型一致
+      model: "gemini-3-flash-preview", // 保持模型一致
       contents: prompt,
       config: {
         responseMimeType: "application/json",
