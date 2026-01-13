@@ -23,12 +23,12 @@ const getGenAI = () => {
 export const searchIngredient = async (query: string): Promise<IngredientResult> => {
   const genAI = getGenAI();
   
-  // 👇 修正 2: 使用当前真实存在的模型 (推荐 gemini-1.5-flash 速度快且支持 JSON)
+  // 👇 修正 2: 使用当前真实存在的模型 
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash", 
+    model: "gemini-3-flash-preview", 
     generationConfig: {
       responseMimeType: "application/json",
-      // responseSchema: ... (Gemini 1.5 Flash 对 JSON Schema 支持很好，下面直接放在 prompt 里约束也可以，或者用 Schema 对象)
+      // responseSchema: ... （下面直接放在 prompt 里约束也可以，或者用 Schema 对象)
     }
   });
 
@@ -104,7 +104,7 @@ export const searchIngredient = async (query: string): Promise<IngredientResult>
 export const fetchLatestApprovals = async (): Promise<ApprovedIngredient[]> => {
   const genAI = getGenAI();
   const model = genAI.getGenerativeModel({ 
-    model: "gemini-1.5-flash",
+    model: "gemini-3-flash-preview",
     generationConfig: { responseMimeType: "application/json" }
   });
 
